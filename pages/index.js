@@ -10,7 +10,6 @@ import { fadeIn } from '../variants'
 // components
 import ParticlesContainer from '../components/ParticlesContainer'
 
-
 const Home = () => {
   const [randomQuote, setRandomQuote] = useState("");
   const el = useRef(null);
