@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import Index from "./pages/Index";
 import ProjectDetails from "./pages/ProjectDetails";
 import NotFound from "./pages/NotFound";
+import useHashScroll from "./hooks/useHashScroll";
 
 // Create a new QueryClient
 const queryClient = new QueryClient();
@@ -15,6 +16,7 @@ const queryClient = new QueryClient();
 // AnimationRoutes component to handle page transitions
 const AnimationRoutes = () => {
   const location = useLocation();
+  useHashScroll();
   
   return (
     <AnimatePresence mode="wait">

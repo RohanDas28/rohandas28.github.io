@@ -6,11 +6,11 @@ import { useCursor } from '@/context/CursorContext';
 import { AlignJustify, X } from 'lucide-react';
 
 const navLinks = [
-  { title: 'Home', href: '#hero' },
-  { title: 'Projects', href: '#projects' },
-  { title: 'About', href: '#about' },
-  { title: 'Skills', href: '#skills' },
-  { title: 'Contact', href: '#contact' }
+  { title: 'Home', href: '/#hero' },
+  { title: 'Projects', href: '/#projects' },
+  { title: 'About', href: '/#about' },
+  { title: 'Skills', href: '/#skills' },
+  { title: 'Contact', href: '/#contact' }
 ];
 
 const Navbar = () => {
@@ -42,6 +42,14 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+  
+  // Update active section based on hash
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setActiveSection(hash.replace('#', ''));
+    }
+  }, [window.location.hash]);
   
   // Navbar animation variants
   const navVariants = {
@@ -101,7 +109,7 @@ const Navbar = () => {
                 <li key={link.title}>
                   <a
                     href={link.href}
-                    className={`hover-target nav-link ${activeSection === link.href.replace('#', '') ? 'active-nav-link' : ''}`}
+                    className={`hover-target nav-link ${activeSection === link.href.replace('/#', '') ? 'active-nav-link' : ''}`}
                     onMouseEnter={() => setCursorType('link')}
                     onMouseLeave={() => setCursorType('default')}
                   >
