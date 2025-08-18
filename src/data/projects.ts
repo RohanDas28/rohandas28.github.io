@@ -30,7 +30,7 @@ export const projects: Project[] = [
     title: "ProductiHub",
     description: "Your personal productivity dashboard",
     fullDescription: "ProductiHub is a modern, all-in-one productivity dashboard designed to help you stay organized, focused, and efficient. It combines several essential tools into a single, beautiful interface, with seamless data synchronization across devices using Supabase.",
-    image: "http://productihub.vercel.app/logo.png",
+    image: "https://productihub.vercel.app/logo.png",
     technologies: ["React", "Vite", "TypeScript", "shadcn/ui", "Tailwind CSS", "@tanstack/react-query", "Framer Motion", "React Hook Form", "tldraw", "Supabase", "React Router"],
     link: "https://productihub.vercel.app/",
     github: "https://github.com/RohanDas28/ProductiHub",
