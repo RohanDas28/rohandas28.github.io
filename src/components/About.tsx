@@ -11,44 +11,44 @@ const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const inView = useInView(sectionRef, { once: true, amount: 0.15 });
   
   useEffect(() => {
     if (sectionRef.current && inView) {
       // Animate section heading
       gsap.fromTo(
         sectionRef.current.querySelector('.section-heading'),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
       );
       
       // Animate text content
       if (textRef.current) {
-        const paragraphs = textRef.current.querySelectorAll('p');
+        const paragraphs = textRef.current.querySelectorAll('p, div, a');
         gsap.fromTo(
           paragraphs,
-          { y: 40, opacity: 0 },
+          { y: 25, opacity: 0 },
           { 
             y: 0, 
             opacity: 1, 
-            stagger: 0.15, 
-            duration: 0.8,
-            ease: "power3.out",
-            delay: 0.3
+            stagger: 0.08, 
+            duration: 0.6,
+            ease: "power2.out",
+            delay: 0.15
           }
         );
       }
       
-      // Animate image
+      // Animate image card
       if (imageRef.current) {
         gsap.fromTo(
           imageRef.current,
-          { scale: 0.9, opacity: 0 },
+          { scale: 0.95, opacity: 0 },
           { 
             scale: 1, 
             opacity: 1, 
-            duration: 1,
-            ease: "power3.out",
+            duration: 0.8,
+            ease: "power2.out",
             delay: 0.2
           }
         );
@@ -57,7 +57,7 @@ const About = () => {
   }, [inView]);
   
   return (
-    <section id="about" className="py-24 bg-zinc-900 relative" ref={sectionRef}>
+    <section id="about" className="py-24 bg-transparent relative" ref={sectionRef}>
       <div className="absolute inset-0 bg-hero-pattern opacity-[0.02]"></div>
       <div className="absolute top-[30%] left-[10%] w-64 h-64 rounded-full bg-white/5 blur-[120px]"></div>
       
@@ -68,10 +68,9 @@ const About = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div 
-            className="animate-section"
             ref={textRef}
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="text-zinc-300 mb-4 leading-relaxed">

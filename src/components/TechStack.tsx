@@ -1,8 +1,8 @@
-
 import React, { useEffect, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useCursor } from '@/context/CursorContext';
+import { Terminal } from 'lucide-react';
 
 const techStacks = [
   {
@@ -26,7 +26,7 @@ const techStacks = [
       { name: "PHP", level: 70 },
       { name: "C", level: 75 },
       { name: "Java", level: 60 },
-      { name: "Lua (basic scripting)", level: 50 }
+      { name: "Lua (scripting)", level: 50 }
     ]
   },
   {
@@ -37,7 +37,7 @@ const techStacks = [
       { name: "Firebase", level: 85 },
       { name: "Strapi", level: 80 },
       { name: "Docker", level: 65 },
-      { name: "Git/GitHub", level: 90 },
+      { name: "Git / GitHub", level: 90 },
       { name: "Linux", level: 90 }
     ]
   },
@@ -71,118 +71,103 @@ const techStacks = [
   }
 ];
 
+const technologies = [
+  "React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS",
+  "Framer Motion", "GSAP", "Node.js", "Python", "Docker",
+  "Git", "Firebase", "Supabase", "OpenAI API", "Photoshop", "Linux"
+];
 
 const TechStack = () => {
   const { setCursorType } = useCursor();
   const sectionRef = useRef<HTMLElement>(null);
-  const inView = useInView(sectionRef, { once: false, amount: 0.2 });
+  const inView = useInView(sectionRef, { once: true, amount: 0.15 });
   
   useEffect(() => {
     if (sectionRef.current && inView) {
-      // Animate section heading
-      gsap.fromTo(
-        sectionRef.current.querySelector('.section-heading'),
-        { y: 50, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7, ease: "power3.out" }
-      );
-      
-      // Animate skill categories
+      // Animate skill categories with smooth stagger
       const categories = sectionRef.current.querySelectorAll('.skill-category');
       gsap.fromTo(
         categories,
-        { y: 50, opacity: 0 },
+        { y: 30, opacity: 0 },
         { 
           y: 0, 
           opacity: 1, 
-          stagger: 0.2, 
-          duration: 0.8,
-          ease: "power3.out",
-          delay: 0.3
+          stagger: 0.1, 
+          duration: 0.6,
+          ease: "power2.out",
+          delay: 0.1
         }
       );
       
-      // Animate skill bars with staggered delay
+      // Animate skill bars
       const skillBars = sectionRef.current.querySelectorAll('.skill-progress-bar');
       skillBars.forEach((bar, index) => {
         const progress = bar.getAttribute('data-progress') || "0";
         gsap.fromTo(
           bar,
-          { width: 0 },
+          { width: "0%" },
           { 
             width: `${progress}%`,
-            duration: 1,
+            duration: 0.85,
             ease: "power2.out",
-            delay: 0.6 + (index * 0.1)
+            delay: 0.3 + (index * 0.04)
           }
         );
       });
     }
   }, [inView]);
-  
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-  
-  const techItemVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1]
-      }
-    }
-  };
-  
-  const technologies = [
-    "JavaScript", "TypeScript", "React", "Next.js","Tailwind", "Bulma",
-    "GSAP", "Three.js", "WebGL", "Node.js", "Firebase",
-    "Git", "Docker", "Figma", "Adobe XD","Photoshop","Premiere Pro", "After Effects", "Framer Motion", "OpenAI",
-  ];
-  
+
   return (
-    <section id="skills" className="py-16 sm:py-24 bg-zinc-950 relative" ref={sectionRef}>
+    <section id="skills" className="py-20 sm:py-24 bg-transparent relative" ref={sectionRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12 sm:mb-16">
-          <h2 className="section-heading">Tech Stack</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto mt-4 text-sm sm:text-base">
-            My toolkit for building modern, interactive web applications.
+        
+        {/* Section Heading */}
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold uppercase tracking-wider mb-3 sm:mb-4">
+            <Terminal size={13} />
+            <span>Core Capabilities</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white mb-3">
+            Tech Stack &amp; Skills
+          </h2>
+          <p className="text-zinc-400 text-sm sm:text-base">
+            Modern tools, frameworks, and programming languages I use to bring ideas to life.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-12 sm:mb-16">
-          {techStacks.map((stack, index) => (
+        {/* Compact Grid */}
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 mb-10 sm:mb-12">
+          {techStacks.map((stack) => (
             <div 
               key={stack.category} 
-              className="glass-card p-5 sm:p-6 rounded-xl skill-category"
+              className="glass-card p-4 sm:p-5 rounded-xl skill-category border border-white/10 hover:border-white/20 transition-all duration-300"
               onMouseEnter={() => setCursorType('text')}
               onMouseLeave={() => setCursorType('default')}
             >
-              <h3 className="text-xl font-semibold text-white mb-6 relative">
-                {stack.category}
-                <span className="absolute -bottom-2 left-0 h-0.5 w-16 bg-white/30"></span>
-              </h3>
+              {/* Category Header */}
+              <div className="flex items-center justify-between mb-3.5 pb-2 border-b border-white/5">
+                <h3 className="text-sm sm:text-base font-semibold text-white tracking-tight">
+                  {stack.category}
+                </h3>
+                <span className="text-[10px] font-mono text-zinc-500">
+                  {stack.skills.length} skills
+                </span>
+              </div>
               
-              <div className="space-y-4">
+              {/* Tight Skill Rows */}
+              <div className="space-y-2.5">
                 {stack.skills.map((skill) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-zinc-300">{skill.name}</span>
-                      <span className="text-zinc-400">{skill.level}%</span>
+                    <div className="flex justify-between text-xs sm:text-[13px] mb-1">
+                      <span className="text-zinc-300 font-medium">{skill.name}</span>
+                      <span className="text-zinc-400 font-mono text-[10px] sm:text-xs">{skill.level}%</span>
                     </div>
-                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-0.5 border border-white/5">
+                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
                       <div 
-                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 skill-progress-bar shadow-[0_0_10px_rgba(56,189,248,0.4)]" 
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 skill-progress-bar shadow-[0_0_8px_rgba(56,189,248,0.35)]" 
                         data-progress={skill.level}
                         style={{ width: 0 }}
-                      ></div>
+                      />
                     </div>
                   </div>
                 ))}
@@ -191,32 +176,23 @@ const TechStack = () => {
           ))}
         </div>
         
-        <motion.div
-          className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3"
-          variants={containerVariants}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-        >
+        {/* Compact Technology Pills */}
+        <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-1.5 sm:gap-2">
           {technologies.map((tech) => (
-            <motion.div
+            <div
               key={tech}
-              className="tech-item px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-full text-zinc-300 text-xs sm:text-sm hover-target cursor-pointer"
-              variants={techItemVariants}
-              whileHover={{ 
-                scale: 1.05, 
-                backgroundColor: "rgba(255, 255, 255, 0.1)",
-                transition: { duration: 0.2 } 
-              }}
+              className="px-3 py-1 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-cyan-400/40 text-zinc-300 hover:text-white text-xs font-medium hover-target transition-all duration-200 cursor-pointer"
               onMouseEnter={() => setCursorType('button')}
               onMouseLeave={() => setCursorType('default')}
             >
               {tech}
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
 };
 
 export default TechStack;
+

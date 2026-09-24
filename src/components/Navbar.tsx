@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCursor } from '@/context/CursorContext';
-import { AlignJustify, X, ExternalLink, Sparkles } from 'lucide-react';
+import { AlignJustify, X, ExternalLink, Rocket } from 'lucide-react';
 
 interface NavLink {
   title: string;
@@ -184,7 +184,7 @@ const Navbar = () => {
               onMouseEnter={() => setCursorType('button')}
               onMouseLeave={() => setCursorType('default')}
             >
-              <Sparkles size={13} className="text-cyan-400 animate-pulse" />
+              <Rocket size={13} className="text-cyan-400" />
               <span>Boardly Live</span>
               <ExternalLink size={12} className="opacity-70" />
             </a>
@@ -251,7 +251,7 @@ const Navbar = () => {
                   rel="noopener noreferrer"
                   className="flex items-center justify-center gap-2 p-3 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 font-medium"
                 >
-                  <Sparkles size={16} />
+                  <Rocket size={16} className="text-cyan-400" />
                   <span>Check out Boardly</span>
                   <ExternalLink size={15} />
                 </a>

@@ -12,65 +12,28 @@ export const initAnimations = () => {
   // Clear any existing ScrollTrigger instances first
   ScrollTrigger.getAll().forEach(trigger => trigger.kill());
   
-  // Animate sections on scroll
+  // Animate sections on scroll if any exist
   const sections = document.querySelectorAll('.animate-section');
   sections.forEach((section) => {
     gsap.fromTo(section, 
-      { y: 50, opacity: 0 },
+      { y: 35, opacity: 0 },
       { 
         y: 0, 
         opacity: 1, 
-        duration: 0.8,
+        duration: 0.7,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: section,
-          start: "top 80%",
-          end: "bottom 20%",
+          start: "top 85%",
           toggleActions: "play none none none"
         }
       }
     );
   });
 
-  // Animate project cards on scroll
-  const projectCards = document.querySelectorAll('.project-card');
-  projectCards.forEach((card, index) => {
-    gsap.fromTo(card, 
-      { y: 50, opacity: 0 },
-      { 
-        y: 0, 
-        opacity: 1, 
-        duration: 0.5,
-        delay: index * 0.1,
-        scrollTrigger: {
-          trigger: card,
-          start: "top 90%",
-          end: "bottom 20%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  });
-
-  // Animate tech stack items
-  const techItems = document.querySelectorAll('.tech-item');
-  techItems.forEach((item, index) => {
-    gsap.fromTo(item, 
-      { scale: 0.8, opacity: 0 },
-      { 
-        scale: 1, 
-        opacity: 1, 
-        duration: 0.3,
-        delay: index * 0.05,
-        scrollTrigger: {
-          trigger: item,
-          start: "top 90%",
-          end: "bottom 20%",
-          toggleActions: "play none none none"
-        }
-      }
-    );
-  });
+  ScrollTrigger.refresh();
 };
+
 
 // Custom hook to trigger animations when element is in view
 export const useAnimateOnView = (ref: React.RefObject<HTMLElement>, animation: string) => {
