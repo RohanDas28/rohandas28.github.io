@@ -10,6 +10,7 @@ import About from '@/components/About';
 import TechStack from '@/components/TechStack';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
+import BackgroundEffects from '@/components/BackgroundEffects';
 import { initAnimations } from '@/lib/animations';
 
 // Register ScrollTrigger plugin
@@ -59,6 +60,7 @@ const Index = () => {
       variants={pageVariants}
       className="bg-zinc-950 text-white overflow-x-hidden"
     >
+      <BackgroundEffects />
       <Navbar />
       <Hero />
       <Projects />

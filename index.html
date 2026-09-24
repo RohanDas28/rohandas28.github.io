@@ -3,11 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rohan Das</title>
-    <meta name="description" content="Portfolio of Rohan Das" />
-    <meta name="author" content="Rohan" />
+    <title>Rohan Das | Frontend Engineer & Creative Developer</title>
+    <meta name="description" content="Portfolio of Rohan Das - Frontend Engineer specializing in Next.js, React, TypeScript, and modern web applications. Creator of Boardly." />
+    <meta name="author" content="Rohan Das" />
+    <meta property="og:title" content="Rohan Das | Frontend Engineer & Creative Developer" />
+    <meta property="og:description" content="Frontend Engineer specializing in Next.js, React, TypeScript, and modern web applications. Creator of Boardly." />
     <meta property="og:image" content="https://img12.pixhost.to/images/1072/578290591_localhost_8080_.png" />
     <link rel="icon" type="image/png" href="/favicon.png">
+    <!-- Single Page App routing script for GitHub Pages fallback -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
   </head>
 
   <body>

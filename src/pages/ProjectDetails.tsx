@@ -6,6 +6,7 @@ import { ArrowLeft, Github, ExternalLink } from 'lucide-react';
 import { projects } from '@/data/projects';
 import { useCursor } from '@/context/CursorContext';
 import { gsap } from 'gsap';
+import BackgroundEffects from '@/components/BackgroundEffects';
 
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -69,43 +70,44 @@ const ProjectDetails = () => {
       animate="animate"
       exit="exit"
       variants={pageVariants}
-      className="bg-zinc-950 text-white min-h-screen pt-20 pb-24"
+      className="bg-zinc-950 text-white min-h-screen pt-20 pb-24 relative overflow-hidden"
     >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <BackgroundEffects />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <Link 
-          to="/" 
+          to="/#projects" 
           className="hover-target inline-flex items-center text-zinc-400 hover:text-white transition-colors mb-8"
           onMouseEnter={() => setCursorType('link')}
           onMouseLeave={() => setCursorType('default')}
         >
           <ArrowLeft size={18} className="mr-2" />
-          <span>Back to Home</span>
+          <span>Back to Projects</span>
         </Link>
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           <div className="lg:col-span-8 project-content">
             <div className="mb-8">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">{project.title}</h1>
-              <div className="flex flex-wrap gap-2 mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white break-words">{project.title}</h1>
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-6">
                 {project.technologies.map(tech => (
-                  <span key={tech} className="inline-block text-xs py-1 px-2 bg-white/5 rounded-full text-zinc-300">
+                  <span key={tech} className="inline-block text-xs py-1 px-2.5 bg-white/5 rounded-full text-zinc-300">
                     {tech}
                   </span>
                 ))}
               </div>
               
-              <div className="flex gap-4 mb-8">
+              <div className="flex flex-wrap gap-3 mb-8">
                 {project.github && (
                   <a 
                     href={project.github} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover-target btn-outline inline-flex items-center"
+                    className="hover-target btn-outline inline-flex items-center text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3"
                     onMouseEnter={() => setCursorType('button')}
                     onMouseLeave={() => setCursorType('default')}
                   >
-                    <Github size={18} className="mr-2" />
-                    GitHub Repo
+                    <Github size={16} className="mr-2 shrink-0" />
+                    <span>GitHub Repo</span>
                   </a>
                 )}
                 
@@ -114,12 +116,12 @@ const ProjectDetails = () => {
                     href={project.link} 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="hover-target btn-primary inline-flex items-center"
+                    className="hover-target btn-primary inline-flex items-center text-xs sm:text-sm px-4 sm:px-6 py-2.5 sm:py-3"
                     onMouseEnter={() => setCursorType('button')}
                     onMouseLeave={() => setCursorType('default')}
                   >
-                    <ExternalLink size={18} className="mr-2" />
-                    Live Demo
+                    <ExternalLink size={16} className="mr-2 shrink-0" />
+                    <span>Live Demo</span>
                   </a>
                 )}
               </div>
@@ -176,7 +178,7 @@ const ProjectDetails = () => {
           </div>
           
           <div className="lg:col-span-4">
-            <div className="glass-card p-6 rounded-lg sticky top-24">
+            <div className="glass-card p-5 sm:p-6 rounded-xl lg:sticky lg:top-24">
               <h3 className="text-xl font-semibold text-white mb-6 relative">
                 Project Details
                 <span className="absolute -bottom-2 left-0 h-0.5 w-16 bg-white/30"></span>

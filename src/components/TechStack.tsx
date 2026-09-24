@@ -148,20 +148,20 @@ const TechStack = () => {
   ];
   
   return (
-    <section id="skills" className="py-24 bg-zinc-950 relative" ref={sectionRef}>
+    <section id="skills" className="py-16 sm:py-24 bg-zinc-950 relative" ref={sectionRef}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="section-heading">Tech Stack</h2>
-          <p className="text-zinc-400 max-w-2xl mx-auto mt-4">
+          <p className="text-zinc-400 max-w-2xl mx-auto mt-4 text-sm sm:text-base">
             My toolkit for building modern, interactive web applications.
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-8 mb-12 sm:mb-16">
           {techStacks.map((stack, index) => (
             <div 
               key={stack.category} 
-              className="glass-card p-6 rounded-lg skill-category"
+              className="glass-card p-5 sm:p-6 rounded-xl skill-category"
               onMouseEnter={() => setCursorType('text')}
               onMouseLeave={() => setCursorType('default')}
             >
@@ -177,9 +177,9 @@ const TechStack = () => {
                       <span className="text-zinc-300">{skill.name}</span>
                       <span className="text-zinc-400">{skill.level}%</span>
                     </div>
-                    <div className="h-1.5 w-full bg-white/10 rounded-full">
+                    <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-0.5 border border-white/5">
                       <div 
-                        className="h-1.5 rounded-full bg-white skill-progress-bar" 
+                        className="h-full rounded-full bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 skill-progress-bar shadow-[0_0_10px_rgba(56,189,248,0.4)]" 
                         data-progress={skill.level}
                         style={{ width: 0 }}
                       ></div>
@@ -192,7 +192,7 @@ const TechStack = () => {
         </div>
         
         <motion.div
-          className="mt-12 flex flex-wrap justify-center gap-3"
+          className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3"
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
@@ -200,7 +200,7 @@ const TechStack = () => {
           {technologies.map((tech) => (
             <motion.div
               key={tech}
-              className="tech-item px-4 py-2 glass-card rounded-full text-zinc-300 text-sm hover-target cursor-pointer"
+              className="tech-item px-3 sm:px-4 py-1.5 sm:py-2 glass-card rounded-full text-zinc-300 text-xs sm:text-sm hover-target cursor-pointer"
               variants={techItemVariants}
               whileHover={{ 
                 scale: 1.05, 
