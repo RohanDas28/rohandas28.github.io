@@ -14,10 +14,10 @@ const Hero = () => {
     if (typedRef.current) {
       typedInstance.current = new Typed(typedRef.current, {
         strings: [
-          'interactive web apps',
-          'fluid user experiences',
-          'scalable SaaS platforms',
-          'modern React interfaces',
+          'scalable web applications',
+          'production SaaS platforms',
+          'high-performance interfaces',
+          'delightful micro-interactions',
         ],
         typeSpeed: 60,
         backSpeed: 35,
@@ -87,8 +87,8 @@ const Hero = () => {
           >
             <div className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/[0.04] border border-white/10 backdrop-blur-md font-mono text-xs sm:text-sm text-zinc-300 shadow-[0_0_20px_rgba(255,255,255,0.03)]">
               <span className="inline-block w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              <span className="text-zinc-400">Crafting</span>
-              <span className="text-cyan-300 font-semibold min-w-[190px] sm:min-w-[210px] text-left">
+              <span className="text-zinc-400">Building</span>
+              <span className="text-cyan-300 font-semibold min-w-[200px] sm:min-w-[220px] text-left">
                 <span ref={typedRef} />
               </span>
             </div>
@@ -101,10 +101,10 @@ const Hero = () => {
             transition={{ duration: 0.7, delay: 0.25, ease: 'easeOut' }}
             className="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed font-normal px-2"
           >
-            Specialized in building modern, performant web applications with{' '}
-            <span className="text-zinc-200 font-medium">Next.js</span>,{' '}
-            <span className="text-zinc-200 font-medium">React</span>, and{' '}
-            <span className="text-zinc-200 font-medium">TypeScript</span>. Passionate about sleek micro-interactions and scalable architecture.
+            Engineering scalable, high-performance web applications with{' '}
+            <span className="text-white font-medium">Next.js</span>,{' '}
+            <span className="text-white font-medium">React</span>, and{' '}
+            <span className="text-white font-medium">TypeScript</span>. Focused on clean frontend architecture, snappy interactions, and shipping real-world software.
           </motion.p>
 
           {/* Quick Callout for Boardly */}
